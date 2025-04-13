@@ -7,8 +7,18 @@ export const Header = () => {
     <header>
       <nav className="header__nav">
         <div className="header__buttons">
-          <NavLink to="/issues">Все задачи</NavLink>
-          <NavLink to="/boards">Проекты</NavLink>
+          <NavLink
+            to="/issues"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Все задачи
+          </NavLink>
+          <NavLink
+            to="/boards"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Проекты
+          </NavLink>
         </div>
         <Button variant="contained">Создать задачу</Button>
       </nav>
