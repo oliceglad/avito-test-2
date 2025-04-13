@@ -1,12 +1,43 @@
-# React + Vite
+## Инструкция по запуску
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Установка зависимостей
 
-Currently, two official plugins are available:
+Для начала работы с проектом убедитесь, что у вас установлены `Docker`. Если это так, выполните следующие шаги.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Если `Docker` не установлен,то вот ссылка по установке: https://www.docker.com
 
-## Expanding the ESLint configuration
+#### 1. Склонируйте проект:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/oliceglad/avito-test.git
+```
+
+#### 2. Перейдите в папку проекта:
+
+```bash
+cd avito-test-2
+```
+
+Убедитесь, что у вас запущен `Docker`
+
+#### 3. Выполните команду:
+
+```bash
+docker-compose up --build
+```
+
+Клиент запустится по адресу http://localhost:3000.
+
+Сервер запустится по адресу http://localhost:80
+
+## Обоснование выбора сторонних библиотек
+
+1. `MaterialUI` - очень удобная библиотека с уже написанными UI компонентами. Позволяет сократить время на разработку, можно создавать кастомные и красивые UI элементы. Очень гибок и прост в использовании.
+
+2. `Redux Toolkit` предоставляет улучшенные и более простые способы работы с состоянием приложения. Вместе с `react-redux` это позволяет эффективно управлять состоянием на стороне клиента, обеспечивая глобальный доступ к данным и синхронизацию между компонентами.
+
+3. `Vite` — это быстрый сборщик для фронтенд-приложений, который поддерживает горячую замену модулей и быструю компиляцию. Плагин `@vitejs/plugin-react `интегрирует поддержку `React` в `Vite`, обеспечивая быструю работу с компонентами.
+
+5. `ESLint` помогает поддерживать качество кода, предотвращать ошибки и придерживаться общих стандартов кодирования. Плагины для React и React Hooks помогают отслеживать специфичные ошибки в React-приложениях.
+
+6. `Sass` используется для улучшенной работы с CSS, обеспечивая более мощные возможности для стилизации (переменные, вложенные правила и т.д.).
