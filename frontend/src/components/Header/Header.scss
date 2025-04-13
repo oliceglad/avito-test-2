@@ -1,0 +1,13 @@
+.header {
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__buttons {
+        & a:nth-child(1) {
+            margin-right: 15px;
+        }
+    }
+}
