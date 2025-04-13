@@ -22,3 +22,5 @@ export const filterTasks = (
     return matchesQuery && matchesStatus && matchesBoard;
   });
 };
+
+

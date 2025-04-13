@@ -1,8 +1,8 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import "./Header.scss";
 
-export const Header = () => {
+export const Header = ({ onOpenTaskDrawer }) => {
   return (
     <header className="header">
       <nav className="header__nav">
@@ -20,7 +20,12 @@ export const Header = () => {
             Проекты
           </NavLink>
         </div>
-        <Button variant="contained">Создать задачу</Button>
+        <Button
+          variant="contained"
+          onClick={() => onOpenTaskDrawer()}
+        >
+          Создать задачу
+        </Button>
       </nav>
     </header>
   );

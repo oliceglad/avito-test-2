@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { Card } from "../../components/Card/Card";
 import { useGetAllTasksQuery } from "../../api/tasksApi";
 import { TaskFilters } from "../../components/TaskFilters/TaskFilters";
+import { TaskDrawer } from "../../components/TaskDrawer/TaskDrawer";
 import {
   filterTasks,
   getUniqueBoards,
@@ -14,6 +15,24 @@ export const Issues = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
   const [filterBoard, setFilterBoard] = useState("");
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  const handleOpenCreate = () => {
+    setSelectedTask(null);
+    setDrawerOpen(true);
+  };
+
+  const handleOpenEdit = (task) => {
+    setSelectedTask(task);
+    setDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawerOpen(false);
+    setSelectedTask(null);
+  };
 
   if (isLoading) return <div>Загрузка...</div>;
   if (isError) return <div>Ошибка загрузки</div>;
@@ -49,15 +68,32 @@ export const Issues = () => {
 
       <ul className="issues__list">
         <li>
-          { filteredTasks.length > 0 ? filteredTasks.map((task) => (
-            <Card key={task.id} id={task.id} task={task} />
-          )) : <div>Ничего не найдено</div>}
+          {filteredTasks.length > 0 ? (
+            filteredTasks.map((task) => (
+              <div key={task.id} onClick={() => handleOpenEdit(task)}>
+                <Card id={task.id} task={task} />
+              </div>
+            ))
+          ) : (
+            <div>Ничего не найдено</div>
+          )}
         </li>
       </ul>
 
-      <Button variant="contained" color="primary" style={{ marginTop: "20px" }}>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ marginTop: "20px" }}
+        onClick={handleOpenCreate}
+      >
         Добавить задачу
       </Button>
+
+      <TaskDrawer
+        open={drawerOpen}
+        onClose={handleCloseDrawer}
+        initialTask={selectedTask}
+      />
     </div>
   );
 };

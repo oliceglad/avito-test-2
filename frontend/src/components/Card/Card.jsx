@@ -1,12 +1,27 @@
+import { useDrag } from "react-dnd";
 import { Link, useLocation } from "react-router-dom";
 import "./Card.scss";
 
 export const Card = ({ id, name, onClick, task }) => {
   const location = useLocation();
   const isBoardsPage = location.pathname.startsWith("/boards");
+  const isTaskPage = location.pathname.startsWith("/issues");
+
+  const [{ isDragging }, drag] = useDrag({
+    type: "TASK",
+    item: { id },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
 
   return (
-    <div className="card" onClick={onClick}>
+    <div
+      className="card"
+      ref={!isTaskPage ? drag : null}
+      onClick={onClick}
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+    >
       <span className="card__name">{name || task?.title}</span>
 
       {task && (
@@ -27,7 +42,7 @@ export const Card = ({ id, name, onClick, task }) => {
       )}
 
       {isBoardsPage && !task && (
-        <Link to={`/board/${id}`} className="card__link">
+        <Link to={`/board/${id}`} state={{ name: name }} className="card__link">
           Перейти к доске →
         </Link>
       )}
