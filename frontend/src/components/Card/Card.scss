@@ -1,31 +1,57 @@
 .card {
-    border: 2px solid black;
-    border-radius: 16px;
-    padding: 16px 24px;
-    margin: 12px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-    background-color: white;
-    transition: transform 0.1s ease;
-    
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #1976d2;
+    font-size: 14px;
+    text-decoration: none;
+
     &:hover {
-      transform: scale(1.02);
-    }
-  
-    &__name {
-      font-weight: bold;
-    }
-  
-    &__link {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-  
-      &:hover {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
-  
+
+  &__meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__assignee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  &__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
